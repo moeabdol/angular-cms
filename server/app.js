@@ -1,5 +1,6 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
+const cors       = require('cors');
 // const path       = require('path');
 
 const config      = require('./config/config');
@@ -9,7 +10,11 @@ const app = express();
 
 require('./config/mongoose');
 
+// Configure body-parser middleware
 app.use(bodyParser.json());
+
+// Configure cors middleware
+app.use(cors());
 
 // Configure routes
 app.use('/pages', pageRoutes);
