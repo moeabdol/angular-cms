@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PagesComponent } from './components/pages/pages.component';
 
 import { PageService } from './services/page.service';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   { path: ':page', component: PagesComponent },
@@ -28,8 +29,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
+    Title,
     PageService,
-    Title
+    UserService
   ],
   bootstrap: [AppComponent]
 })
