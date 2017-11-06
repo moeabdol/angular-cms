@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PagesComponent } from './components/pages/pages.component';
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    FlashMessagesModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
