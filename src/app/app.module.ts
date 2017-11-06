@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   { path: 'signup', component: RegisterComponent },
+  { path: 'signin', component: SigninComponent },
   { path: ':page', component: PagesComponent },
   { path: '', component: PagesComponent },
 ];
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     PagesComponent,
-    RegisterComponent
+    RegisterComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

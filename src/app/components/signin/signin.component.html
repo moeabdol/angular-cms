@@ -1,6 +1,10 @@
-<h1 class="display-4">Signup</h1>
+<h1 class="display-4">Signin</h1>
 
-<form novalidate #f="ngForm" (ngSubmit)="signup(f)">
+<div class="alert alert-success" *ngIf="userRegistered">
+  <p class="lead">Thank you for registering, you can now sign in.</p>
+</div>
+
+<form novalidate #f="ngForm" (ngSubmit)="signin(f)">
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" class="form-control" placeholder="Username"
@@ -32,6 +36,6 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-primary" [disabled]="f.invalid">Signup</button>
+    <button class="btn btn-primary" [disabled]="f.invalid">Signin</button>
   </div>
 </form>

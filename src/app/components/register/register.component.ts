@@ -22,7 +22,10 @@ export class RegisterComponent implements OnInit {
     if (valid) {
       this._userService.signup(value)
         .subscribe(
-          res => this._router.navigateByUrl('/'),
+          res => {
+            localStorage.setItem('userRegistered', 'true');
+            this._router.navigateByUrl('/signin');
+          },
           err => {
             this._flashService.show(err.error.message, {
               cssClass: 'alert alert-danger',
