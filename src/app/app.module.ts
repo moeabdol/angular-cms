@@ -13,6 +13,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignoutComponent } from './components/signout/signout.component';
+import { AdminPagesComponent } from './components/admin-pages/admin-pages.component';
 
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: RegisterComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signout', component: SignoutComponent },
+  { path: 'admin/pages', component: AdminPagesComponent },
   { path: ':page', component: PagesComponent },
   { path: '', component: PagesComponent },
 ];
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     PagesComponent,
     RegisterComponent,
     SigninComponent,
-    SignoutComponent
+    SignoutComponent,
+    AdminPagesComponent
   ],
   imports: [
     BrowserModule,
