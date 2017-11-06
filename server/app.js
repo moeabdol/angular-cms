@@ -4,8 +4,9 @@ const cors       = require('cors');
 const morgan     = require('morgan');
 // const path       = require('path');
 
-const config      = require('./config/config');
+const config     = require('./config/config');
 const pageRoutes = require('./routes/pages');
+const userRoutes = require('./routes/users');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cors());
 
 // Configure routes
 app.use('/pages', pageRoutes);
+app.use('/users', userRoutes);
 
 app.listen(config.port, err => {
   if (err) console.log(err);
