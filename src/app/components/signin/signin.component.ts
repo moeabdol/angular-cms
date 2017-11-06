@@ -18,9 +18,12 @@ export class SigninComponent implements OnInit {
               private _flashService: FlashMessagesService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this._router.navigateByUrl('/');
+    }
+
     if (localStorage.getItem('userRegistered')) {
       this.userRegistered = true;
-
       localStorage.removeItem('userRegistered');
     }
   }
@@ -30,7 +33,7 @@ export class SigninComponent implements OnInit {
       this._userService.signin(value)
         .subscribe(
           res => {
-            localStorage.setItem('user', res['username']);
+            localStorage.setItem('user', res['user']['username']);
             this._router.navigateByUrl('/');
           },
           err => {
