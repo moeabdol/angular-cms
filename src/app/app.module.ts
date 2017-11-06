@@ -8,24 +8,28 @@ import { Title } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PagesComponent } from './components/pages/pages.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
+  { path: 'signup', component: RegisterComponent },
   { path: ':page', component: PagesComponent },
-  { path: '', component: PagesComponent }
+  { path: '', component: PagesComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PagesComponent
+    PagesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
