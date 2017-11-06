@@ -9,6 +9,7 @@ import { PageService } from '../../services/page.service';
 })
 export class NavbarComponent implements OnInit {
   public pages: any;
+  public user: string;
 
   constructor(private _pageService: PageService) { }
 
@@ -18,5 +19,13 @@ export class NavbarComponent implements OnInit {
         this._pageService.pagesBS.next(pages);
         this.pages = this._pageService.pagesBS;
       });
+  }
+
+  get userSignedIn() {
+    if (localStorage.getItem('user')) {
+      this.user = localStorage.getItem('user');
+      return true;
+    }
+    return false;
   }
 }

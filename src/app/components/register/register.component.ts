@@ -16,6 +16,9 @@ export class RegisterComponent implements OnInit {
               private _flashService: FlashMessagesService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this._router.navigateByUrl('/');
+    }
   }
 
   signup({ value, valid }) {

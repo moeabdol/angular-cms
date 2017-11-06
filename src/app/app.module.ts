@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { SignoutComponent } from './components/signout/signout.component';
 
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
@@ -19,6 +20,7 @@ import { UserService } from './services/user.service';
 const appRoutes: Routes = [
   { path: 'signup', component: RegisterComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'signout', component: SignoutComponent },
   { path: ':page', component: PagesComponent },
   { path: '', component: PagesComponent },
 ];
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     PagesComponent,
     RegisterComponent,
-    SigninComponent
+    SigninComponent,
+    SignoutComponent
   ],
   imports: [
     BrowserModule,
