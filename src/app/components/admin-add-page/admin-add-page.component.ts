@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { PageService } from '../../services/page.service';
+
+declare var CKEDITOR: any;
 
 @Component({
   selector: 'app-admin-add-page',
@@ -14,13 +17,20 @@ export class AdminAddPageComponent implements OnInit {
   public content: string;
 
   constructor(private _pageService: PageService,
-              private _flashService: FlashMessagesService) { }
+              private _flashService: FlashMessagesService,
+              private _router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user') !== 'admin') {
+      this._router.navigateByUrl('');
+    }
+
+    CKEDITOR.replace('content');
   }
 
   addPage({ form, value, valid }) {
     if (valid) {
+      value.content = CKEDITOR.instances.content.getData();
       this._pageService.postAddPage(value)
         .subscribe(
           res => {
@@ -29,6 +39,7 @@ export class AdminAddPageComponent implements OnInit {
               timeout: 2000
             });
             form.reset();
+            CKEDITOR.instances.content.setData('');
 
             this._pageService.getPages()
               .subscribe((pages: any) => {
