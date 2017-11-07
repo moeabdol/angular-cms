@@ -69,22 +69,26 @@ const update = (req, res, next) => {
   let slug = req.body.title.replace(/\s+/g, '-').toLowerCase();
   let content = req.body.content;
 
-  Page.findById(id)
-    .then(page => {
-      if (!page) return res.status(404).json({
-        message: 'Page doesn\'t exists!'
+  Page.findOne({ slug: slug, _id: { $ne: id } })
+    .then(p => {
+      if (p) return res.status(409).json({
+        message: 'Page with same title exists!'
       });
 
-      if (page.slug === slug && page._id !== id) return res.status(409).json({
-        message: 'Slug already exists!'
-      });
+      Page.findById(id)
+        .then(page => {
+          if (!page) return res.status(404).json({
+            message: 'Page doesn\'t exists!'
+          });
 
-      page.title = title;
-      page.slug = slug;
-      page.content = content;
+          page.title = title;
+          page.slug = slug;
+          page.content = content;
 
-      page.save()
-        .then(() => res.status(201).json(page))
+          page.save()
+            .then(() => res.status(201).json(page))
+            .catch(err => next(err));
+        })
         .catch(err => next(err));
     })
     .catch(err => next(err));
