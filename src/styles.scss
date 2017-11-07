@@ -1,3 +1,23 @@
 body {
   padding-top: 3.5rem;
+
+  nav.admin {
+    background: 'purple';
+    position: fixed;
+    width: 150px;
+    top: 6px;
+    left: 0;
+    margin-top: 50px;
+    margin-bottom: 0;
+    z-index: 1;
+
+    li {
+      float: none;
+
+      a {
+        color: white !important;
+        font-weight: bold;
+      }
+    }
+  }
 }

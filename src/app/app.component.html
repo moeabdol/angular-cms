@@ -4,7 +4,15 @@
   <flash-messages></flash-messages>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-2" *ngIf="!front">
+      <admin-navbar></admin-navbar>
+    </div>
+
+    <div class="col-sm-10" *ngIf="!front">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-sm-12" *ngIf="front">
       <router-outlet></router-outlet>
     </div>
   </div>
