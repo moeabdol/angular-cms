@@ -25,7 +25,6 @@ export class PageService {
   }
 
   postEditPage(value) {
-    console.log(value);
     return this._http.post(`http://localhost:3000/pages/edit-page/${value.id}`,
       value);
   }

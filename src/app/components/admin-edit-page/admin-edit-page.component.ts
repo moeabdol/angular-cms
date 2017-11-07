@@ -64,7 +64,7 @@ export class AdminEditPageComponent implements OnInit {
               });
           },
           err => {
-            this._flashService.show(err.error.message, {
+            this._flashService.show(err['error']['message'], {
               cssClass: 'alert alert-danger',
               timeout: 2000
             });
