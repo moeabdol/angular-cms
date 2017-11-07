@@ -44,8 +44,20 @@ const create = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const edit = (req, res, next) => {
+  Page.findById(req.params.id)
+    .then(page => {
+      if (!page) return res.status(404).json({
+        message: 'Page not found!'
+      });
+      res.status(200).json(page);
+    })
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   show,
-  create
+  create,
+  edit
 };

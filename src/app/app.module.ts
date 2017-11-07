@@ -16,6 +16,7 @@ import { SignoutComponent } from './components/signout/signout.component';
 import { AdminPagesComponent } from './components/admin-pages/admin-pages.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminAddPageComponent } from './components/admin-add-page/admin-add-page.component';
+import { AdminEditPageComponent } from './components/admin-edit-page/admin-edit-page.component';
 
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'signout', component: SignoutComponent },
   { path: 'admin/pages', component: AdminPagesComponent },
   { path: 'admin/add-page', component: AdminAddPageComponent },
+  { path: 'admin/edit-page/:id', component: AdminEditPageComponent },
   { path: ':page', component: PagesComponent },
   { path: '', component: PagesComponent },
 ];
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     SignoutComponent,
     AdminPagesComponent,
     AdminNavbarComponent,
-    AdminAddPageComponent
+    AdminAddPageComponent,
+    AdminEditPageComponent
   ],
   imports: [
     BrowserModule,

@@ -7,5 +7,6 @@ const pages = require('../controllers/pages');
 router.get('/', pages.index);
 router.get('/:slug', pages.show);
 router.post('/add-page', pages.create);
+router.get('/edit-page/:id', pages.edit);
 
 module.exports = router;
