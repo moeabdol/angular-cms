@@ -55,9 +55,44 @@ const edit = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const update = (req, res, next) => {
+  if (!req.body.title) return res.status(422).json({
+    message: 'Title is required!'
+  });
+
+  if (!req.body.content) return res.status(422).json({
+    message: 'Content is required!'
+  });
+
+  let title = req.body.title;
+  let slug = req.body.title.replace(/\s+/g, '-').toLowerCase();
+  let content = req.body.content;
+
+  Page.findById(req.params.id)
+    .then(page => {
+      if (!page) return res.status(404).json({
+        message: 'Page doesn\'t exists!'
+      });
+
+      if (page.slug === slug) return res.status(409).json({
+        message: 'Slug already exists!'
+      });
+
+      page.title = title;
+      page.slug = slug;
+      page.content = content;
+
+      page.save()
+        .then(() => res.status(201).json(page))
+        .catch(err => next(err));
+    })
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   show,
   create,
-  edit
+  edit,
+  update
 };

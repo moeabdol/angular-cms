@@ -1,9 +1,9 @@
-<h1 class="display-4">Edit {{title}} Page</h1>
+<h1 class="display-4">Edit {{page?.title}} Page</h1>
 <a routerLink="/admin/pages" class="btn btn-primary">Back to Pages</a>
 <br />
 <br />
 
-<form novalidate #f="ngForm" (ngSubmit)="addPage(f)">
+<form novalidate #f="ngForm" (ngSubmit)="editPage(f)">
   <div class="form-group">
     <label for="title">Title:</label>
     <input type="text" class="form-control" placeholder="Title"
@@ -28,6 +28,6 @@
   <input type="hidden" name="id" [(ngModel)]="id">
 
   <div class="form-group">
-    <button class="btn btn-primary" [disabled]="f.invalid">Add page</button>
+    <button class="btn btn-primary" [disabled]="f.invalid">Edit page</button>
   </div>
 </form>
