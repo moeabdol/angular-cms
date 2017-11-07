@@ -64,17 +64,18 @@ const update = (req, res, next) => {
     message: 'Content is required!'
   });
 
+  let id = req.params.id;
   let title = req.body.title;
   let slug = req.body.title.replace(/\s+/g, '-').toLowerCase();
   let content = req.body.content;
 
-  Page.findById(req.params.id)
+  Page.findById(id)
     .then(page => {
       if (!page) return res.status(404).json({
         message: 'Page doesn\'t exists!'
       });
 
-      if (page.slug === slug) return res.status(409).json({
+      if (page.slug === slug && page._id !== id) return res.status(409).json({
         message: 'Slug already exists!'
       });
 
@@ -89,10 +90,19 @@ const update = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const destroy = (req, res, next) => {
+  Page.findByIdAndRemove(req.params.id)
+    .then(() => res.status(200).json({
+      message: 'Page deleted successfully'
+    }))
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   show,
   create,
   edit,
-  update
+  update,
+  destroy
 };
